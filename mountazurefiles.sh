@@ -11,14 +11,14 @@
 # For more details refer to https://azure.microsoft.com/en-us/documentation/articles/storage-how-to-use-files-linux/
 
 
-mount -t cifs //$1.file.core.windows.net/cpudsvmfs /data/home -o vers=3.0,username=$1,password=$2,dir_mode=0777,file_mode=0777
+mount -t cifs //$1.file.core.windows.net/cpudsvmfs /data/home/ -o vers=3.0,username=$1,password=$2,dir_mode=0777,file_mode=0777
 
-mkdir -p $4
-mount -t cifs //$1.file.core.windows.net/$3 $4 -o vers=3.0,username=$1,password=$2,dir_mode=0777,file_mode=0777
+# mkdir -p $4
+# mount -t cifs //$1.file.core.windows.net/$3 $4 -o vers=3.0,username=$1,password=$2,dir_mode=0777,file_mode=0777
 
 # create a symlink from /mountpath/xxx to ~username/xxx
-linkpoint=`echo $4 | sed 's/.*\///'`
-ln -s $4 /home/$5/$linkpoint
+# linkpoint=`echo $4 | sed 's/.*\///'`
+# ln -s $4 /home/$5/$linkpoint
 # If you store your notebooks on a Azure Files to be mounted on any VM, link it to the ~/notebooks/remote to be accessible on Jupyter
 # Convention: You have notebooks/<USERNAME> on your File Share
-ln -s $4/notebooks/$5 /home/$5/notebooks/remote
+# ln -s $4/notebooks/$5 /home/$5/notebooks/remote
